@@ -1,2 +1,2 @@
-# Modulo4
-Práctica de Javascript. Creando una Pokedex
+# Semana4-JS
+Práctica de la semana 4

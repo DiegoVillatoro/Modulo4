@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pokedex LaunchX</title>
+        <link rel = "icon" href="assets/pokeball2.png">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://kit.fontawesome.com/f869a2c5a0.js" crossorigin="anonymous"></script>
+
+    </head>
+    <body>
+        <header>
+            <img class= "logo" src="./assets/pokedex.png">
+        </header> 
+        <section id="pokedexDesign" class="flex-col" fl>
+            <!-- Left Side pokedex -->
+            <div id="left" class="pokedexSides float-left">
+
+                <div class="maroon-back flex-col">
+                     <!-- input -->
+                    <div id="busqueda" class="flex-row" style="margin-bottom: 5px;">
+                        <input class="float-left" type="text" placeholder="Escribe el nombre de un pokemon" id="pokeName" name="pokeName">
+                        <button id="search"class="float-right" onclick="fetchPokemonbyName()"><i class="fa-solid fa-magnifying-glass"></i></button>
+
+                    </div>
+
+
+                    <!-- imagen -->
+                    <div id="divImg" class="imgPix"><img alt="Pokemon"id="pokeImg"></div>
+                    <!-- botones -->
+                    <div id="botones"class="flex-row">
+                        <button class = "sprite-control" onclick="toggleGender()"><i class="fa-solid fa-venus"></i></button>
+                        <button class = "sprite-control shiny" onclick="toggleShiny()">Shiny</button>
+                        <button class = "sprite-control" onclick="toggleBack()"><i class="fa-solid fa-rotate"></i></button>
+                    </div>
+
+                    <!-- nombre, id y datos -->
+                    <div id="datos" class="screen flex-col" style="width:100%; height:25%">
+                        <div id ="nameNumber" class="flex-row" style="display: none;">
+                            <span class="float-left text-digital"id="nameDisplay" style="text-align:left; width:50%">Name</span>
+                            <span class="float-right text-digital"id="pokeNumber" style="text-align:right; width:50%">#</span>
+                        </div>
+                        <hr id="hrdiv">
+                         <div id="caracteristicas" class="flex-col" style="display: none;">
+                             <div class = "flex-row">
+                                <span class="text-digital" style="text-align:left; width:50%">Height</span>
+                                <span class="text-digital"id = "pokeHeight" style="text-align:right; width:50%"></span>
+                             </div>
+                    
+                             <div class = "flex-row">
+                                <span class="text-digital" style="text-align:left; width:50%">Weight</span>
+                                <span class="text-digital" id= "pokeWeight" style="text-align:right; width:50%"></span>
+                             </div>
+                        </div>
+                    </div>
+                    
+                    <!-- height weight -->
+                    
+
+                </div>
+               
+            </div>
+
+            <div id="right" class="pokedexSides float-right"> 
+                <div class="maroon-back flex-col" style="gap:2%">
+                    <!-- Primera sección -->
+                    <div class="sect flex-row" style="height:30%">
+                        <!-- Estadisticas -->
+                        <div class="flex-col float-left screen" id="estadisticas" style="width:60%">
+                            <table id="pokeStats">
+                            </table>
+                        </div>
+                        <!-- Tipos -->
+                        <div class="flex-col float-left inset" id="tipos"style="width:40%">
+                            <span class="titulo titulo-tipos text-digital"><h3>TYPES</h3></span>
+                            <div class="pokeType-container flex-col">
+                                <span class="pokeType" id="pt1"></span>
+                                <span class="pokeType" id="pt2"></span>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                    <div class="sect flex-row" style="height:38%;">
+                        <div class="evolution">
+                            <span class="evo-title">I</span>
+                            <span class="evo-title">II</span>
+                            <span class="evo-title">III</span>
+                            <div id="evo1" class="imgPix evo-container" ><img alt="Pokemon" id= "evoimg1" class="evoimg"></div>
+                            <div id="evo2" class="imgPix evo-container"><img alt="Pokemon" id= "evoimg2" class="evoimg"></div>
+                            <div id="evo3" class="imgPix evo-container" ><img alt="Pokemon" id= "evoimg3" class="evoimg"></div>
+                            <div id="nameEvo1" class="screen" style="width:100%; height:100%;padding:0;align-items: center;text-align: center;"><span class="evoName"></span></div>
+                            <div id="nameEvo2" class="screen" style="width:100%; height:100%;padding:0;align-items: center;text-align: center;"><span class="evoName"></span></div>
+                            <div id="nameEvo3" class="screen" style="width:100%; height:100%;padding:0;align-items: center;text-align: center;"><span class="evoName"></span></div>
+                        </div>
+                    </div>
+                    <div class="sect flex-col" style="height:32%; gap:0">
+                        <!-- Habilidades -->
+                        <span class="titulo titulo-tipos text-digital" ><h3>Abilities</h3></span>
+                        
+
+
+                        <div class="flex-row screen" style="width:100%; height:100%;">
+                            <div class="float-left flex-col container" style="width:50%; ">
+                                <span class="text-digital" style="width: 100%">Normal</span>
+                                <ul id="pokeAbilitiesNormal" style="width:100%"></ul>
+                            </div>
+                            <div class="float-right flex-col container" style="width:50%">
+                                <span class="text-digital">Hidden</span>
+                                <ul id="pokeAbilitiesHidden"></ul>
+    
+                            </div>
+                        </div>
+                        
+
+                    </div>
+                    
+
+                </div> 
+                
+                
+                
+
+            </div>
+        </section>
+
+    
+
+        <!-- #evoluciones imagen -->
+   
+
+    </body>
+    <footer>
+        <script src="./pokedex.js"></script>
+    </footer>
+</html>
